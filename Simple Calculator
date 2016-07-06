@@ -1,0 +1,230 @@
+//CalculatorFunc.java
+package Calculator;
+
+public class CalculatorFunc {
+	
+	double x,y,total;
+	
+	public double add()
+	{
+		total = x + y;
+		
+		System.out.println("Addition Total:" + total);
+		
+		return total;
+		
+	}
+	
+	public double sub()
+	{
+		total = x - y;
+		
+		
+		System.out.println("Subtraction Total:" + total);
+		
+		return total;
+		
+	}
+	
+	public double div()
+	{
+		
+		//if (x != 0 || y !=0)
+		total = x / y;
+		
+		
+		System.out.println("Division Total:" + total);
+		
+		return total;
+		
+	}
+	
+	public double mult()
+	{
+		
+			total = x * y;
+		
+			
+		System.out.println("Multiplication Total:" + total);
+		
+		
+		return total;
+				
+	}
+	   
+}
+
+
+
+//CalculatorExec.java
+
+package Calculator;
+
+import java.util.Scanner;
+
+public class CalculatorExec {
+
+	private static String yes;
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		double a, b;
+		int menu=0;
+		String i = null;
+		boolean cont = true;
+		Scanner read = new Scanner(System.in);
+		
+		
+		while (cont == true) {
+	
+		System.out.println("Enter Values for calculation:");
+		
+		a = read.nextDouble();
+		b = read.nextDouble();
+		
+			CalculatorFunc cexc = new CalculatorFunc();
+			cexc.x = a;
+			cexc.y = b;
+			
+			
+			System.out.println("Select the type of calculation from below-");
+			System.out.println("1. Addition");
+			System.out.println("2. Subtraction");
+			System.out.println("3. Division");
+			System.out.println("4. Multiplication");
+			
+			
+			//System.out.println("Value:"+ cexc.x );
+			//System.out.println("Value:"+ cexc.y );
+			
+			
+		/*cexc.add();
+		cexc.sub();
+		cexc.div();
+		cexc.mult();*/
+			
+			menu = read.nextInt();
+			
+			
+		
+			switch(menu)
+			{
+			case 1: cexc.add();
+					break;
+			case 2: cexc.sub();
+					break;
+			case 3: 
+				    if(cexc.x == 0 || cexc.y == 0)
+				    	{
+				    	
+				    	System.out.println("Inputs are not valid for division");
+				    	}
+				    else{
+				    	cexc.div();				    	
+				    	}
+				    break;
+			case 4:cexc.mult();
+				   break;
+					
+			default: System.out.println("Invalid menu");
+				     break;
+			
+			}
+	
+			System.out.println(" ");
+			System.out.println("Do you want to continue? Enter Y for Yes or N for No");
+			
+			Scanner answer = new Scanner(System.in);		
+			String ans = answer.nextLine();			
+			
+			if(ans.equalsIgnoreCase("y"))
+			{
+				cont = true;
+				
+			}
+			else if(ans.equalsIgnoreCase("n"))
+			{
+				cont = false;
+				System.out.println("Calculator Closed. Thank You!");
+				System.exit(0);
+				
+			}
+
+			
+		}
+	
+	}
+
+}
+
+/* Output
+
+Enter Values for calculation:
+20
+30
+Select the type of calculation from below-
+1. Addition
+2. Subtraction
+3. Division
+4. Multiplication
+1
+Addition Total:50.0
+ 
+Do you want to continue? Enter Y for Yes or N for No
+y
+Enter Values for calculation:
+30
+40
+Select the type of calculation from below-
+1. Addition
+2. Subtraction
+3. Division
+4. Multiplication
+2
+Subtraction Total:-10.0
+ 
+Do you want to continue? Enter Y for Yes or N for No
+y
+Enter Values for calculation:
+60
+0
+Select the type of calculation from below-
+1. Addition
+2. Subtraction
+3. Division
+4. Multiplication
+3
+Inputs are not valid for division
+ 
+Do you want to continue? Enter Y for Yes or N for No
+y
+Enter Values for calculation:
+53
+62
+Select the type of calculation from below-
+1. Addition
+2. Subtraction
+3. Division
+4. Multiplication
+3
+Division Total:0.8548387096774194
+ 
+Do you want to continue? Enter Y for Yes or N for No
+y
+Enter Values for calculation:
+40
+50
+Select the type of calculation from below-
+1. Addition
+2. Subtraction
+3. Division
+4. Multiplication
+4
+Multiplication Total:2000.0
+ 
+Do you want to continue? Enter Y for Yes or N for No
+n
+Calculator Closed. Thank You!
+
+*/
